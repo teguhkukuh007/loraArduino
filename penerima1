@@ -124,51 +124,7 @@ void publishMQTT() {
   if (!client.connected()) {              //Reconnect to MQTT if disconnected
     reconnect();
   }
-/*
-  //Parse message should look like "pool&temperature&23.5"
-  int index1 = msg.indexOf('&');                            //search for position of first delimiter
-  String Snode = msg.substring(0, index1);              //get first part of topic
-  int index2 = msg.indexOf('&', index1 +1);                 //search for position of second delimiter
-  String Ssensor = msg.substring(index1 + 1, index2);   //get sensor name for second part of topic
-  String Svalue = msg.substring(index2 + 1);                //get sensor value
-
-  int str_len = Snode.length() + 1;
-  char node[str_len];
-  Snode.toCharArray(node, str_len);
-  str_len = Ssensor.length() + 1;
-  char sensor[str_len];
-  Ssensor.toCharArray(sensor, str_len);
-  str_len = Svalue.length() + 1;
-  char value[str_len];
-  Svalue.toCharArray(value, str_len);
-
-  Serial.println("Parsed string data:");
-  Serial.println("Snode: " + Snode);
-  Serial.println("Ssensor: " + Ssensor);
-  Serial.println("Svalue: " + Svalue);
-
-  //construct topics
-  char TopicSensorval[20] = "lora/";
-  strcat(TopicSensorval, node);
-  strcat(TopicSensorval, "/");
-  strcat(TopicSensorval, sensor);
-  char TopicRssi[20] = "lora/";
-  strcat(TopicRssi, node);
-  strcat(TopicRssi, "/RSSI");
-  char TopicSnr[20] = "lora/";
-  strcat(TopicSnr, node);
-  strcat(TopicSnr, "/SNR");
-  char TopicFE[20] = "lora/";
-  strcat(TopicFE, node);
-  strcat(TopicFE, "/FE");
-  char tempString[10];
-
-  Serial.println("Ready to publish char data:");
-  Serial.print("Value: ");
-  Serial.println(value);
-  Serial.print("TopicSensorval: ");
-  Serial.println(TopicSensorval);
-*/
+ 
   //publish to MQTT
   int str_len = msg.length() + 1;
   char value[str_len];
